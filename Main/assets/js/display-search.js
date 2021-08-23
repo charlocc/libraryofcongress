@@ -33,11 +33,23 @@ function searchApi(query, format) {
     .then(function (data) {
       console.log(data.results);
       for (var i=0; i<data.results.length; i++) {
-        var title = document.createElement('h3');
+        var container = document.createElement('div');
+        var title = document.createElement("h3");
+        var date = document.createElement("p");
+        var description = document.createElement("p");
         title.textContent=data.results[i].title;
-        resultContentEl.append(title);
-
+        date.textContent=data.results[i].date;
+        description.textContent=data.results[i].description;
+        container.appendChild(title);
+        container.appendChild(date);
+        container.appendChild(description);
+        resultContentEl.appendChild(container);
         console.log(title);
+        container.style.border = "solid black 2px";
+        container.style.backgroundColor = "white";
+        container.style.margin = "5px";
+        container.style.color = "black";
+        container.style.textAlign = "center";
       }
     });
 }
